@@ -1,52 +1,20 @@
 #include "so_long.h"
 
-
 int my_kf(int keycode, t_var *he)
 {
 	int i,j,w,h,b,d,u,o,x,f;
 	void *jj;
 	void *kk;
 	void *ll;
-	if (keycode == 2 || keycode == 1 || keycode == 0 || keycode == 13)
-	{
-		jj = mlx_xpm_file_to_image(he->mlx,"xpm/An.xpm",&b, &d);
-		mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
-	} 
-	printf("%d|%d",he->h,he->w);
-	
+
 	if (keycode == 2) // x+
-	{
-		he->x += 40;
-		if (he->x > he->w - 40)
-			he->x -= 40;
-		he->img = mlx_xpm_file_to_image(he->mlx,"xpm/right.xpm",&w, &h);
-		mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
-	}
+		right(he);
 	if (keycode == 1) // y-
-	{
-		he->y = he->y + 40;
-		if (he->y > he->h - 40)
-			he->y -= 40;
-		he->img = mlx_xpm_file_to_image(he->mlx,"xpm/right.xpm",&w, &h);
-		mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
-	}
+		up(he);
 	if (keycode == 13) // y+
-	{
-		he->y = he->y - 40;
-		if (he->y < 0)
-			he->y += 40;
-		he->img = mlx_xpm_file_to_image(he->mlx,"xpm/right.xpm",&w, &h);
-		mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
-	}
+		down(he);
 	if (keycode == 0) //x-
-	{
-		
-		he->x = he->x - 40;
-		if (he->x < 0)
-			he->x += 40;
-		he->img = mlx_xpm_file_to_image(he->mlx,"xpm/left.xpm",&w, &h);
-		mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
-	}
+		left(he);
 	if (keycode == 53) // exit
 	{
 		mlx_destroy_window(he->mlx,he->win);
@@ -76,6 +44,7 @@ int	main(void)
 	xe.x= ft_strlen(s[0]);
 	xe.y= count_w(s);
 	mlx = mlx_init();
+	he.len = 0;
 	win = mlx_new_window(mlx,xe.x * 40 ,xe.y * 40,"Window");
 	i = 0;
 	while (i <= xe.x *40)

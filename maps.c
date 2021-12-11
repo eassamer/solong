@@ -55,6 +55,7 @@ void printmap(t_var *he, char **s)
 			{
 				jj = mlx_xpm_file_to_image(he->mlx,"xpm/Coll.xpm",&b, &d);
 				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->len++;
 			}
 			if (s[i][j] == 'E')
 			{
@@ -72,6 +73,7 @@ void printmap(t_var *he, char **s)
 		he->y += 40;
 		i++;
 	}
+	printf("%d",he->len);
 	he->x = 0;
 	he->y = 0;
 }

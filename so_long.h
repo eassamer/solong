@@ -17,6 +17,7 @@ typedef struct s_var{
 	int px;
 	int py;
 	int w;
+	int len;
 }	t_var;
 
 typedef struct s_res
@@ -38,4 +39,8 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const	*s, unsigned int start, size_t len);
 char	*ft_strjoin1(char *s1, char *s2);
 void printmap(t_var *he,char **s);
+void left(t_var *he);
+void right(t_var *he);
+void up(t_var *he);
+void down(t_var *he);
 #endif

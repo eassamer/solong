@@ -4,7 +4,6 @@ SRCS = maps.c \
 			gnl.c \
 			index.c \
 			utils.c
-
 CFLAGS = -Wall -Wextra -Werror
 
 FlAGS = -lmlx -framework OpenGL -framework AppKit
