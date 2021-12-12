@@ -14,6 +14,8 @@ typedef struct s_var{
 	int x;
 	int y;
 	int h;
+	int b;
+	int d;
 	int px;
 	int py;
 	int w;
@@ -43,4 +45,8 @@ void left(t_var *he);
 void right(t_var *he);
 void up(t_var *he);
 void down(t_var *he);
+void printcount(t_var *he);
+int ft_checkc(t_var *he);
+void ft_print_m(t_var *he);
+char	*ft_itoa(int n);
 #endif

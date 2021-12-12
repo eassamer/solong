@@ -23,9 +23,6 @@ void printmap(t_var *he, char **s)
 {
 	int i;
 	int j;
-	int d;
-	int b;
-	void *jj;
 	i = 0;
 	
 	while (s[i])
@@ -36,36 +33,43 @@ void printmap(t_var *he, char **s)
 		{
 			if (s[i][j] == '1')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/wall.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/wall.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
 			}
 			if (s[i][j] == '0')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/An.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/An.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
 			}
 			if (s[i][j] == 'P')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/right.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/isr.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
 				he->px = he->x;
 				he->py = he->y;
 			}
 			if (s[i][j] == 'C')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/Coll.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/Coll.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
 				he->len++;
 			}
 			if (s[i][j] == 'E')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/Exit.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/Exit.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
 			}
 			if (s[i][j] == '0')
 			{
-				jj = mlx_xpm_file_to_image(he->mlx,"xpm/An.xpm",&b, &d);
-				mlx_put_image_to_window(he->mlx,he->win,jj,he->x,he->y);
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/An.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
+				mlx_destroy_image(he->mlx,he->img);
+			}
+			if (s[i][j]  == 'N')
+			{
+				he->img = mlx_xpm_file_to_image(he->mlx,"xpm/trap.xpm",&he->b, &he->d);
+				mlx_put_image_to_window(he->mlx,he->win,he->img,he->x,he->y);
+				mlx_destroy_image(he->mlx,he->img);
 			}
 			he->x += 40;
 			j++;
@@ -73,7 +77,42 @@ void printmap(t_var *he, char **s)
 		he->y += 40;
 		i++;
 	}
-	printf("%d",he->len);
 	he->x = 0;
 	he->y = 0;
+	printf("%d",he->len);
+}
+
+int check_map(char **s,t_res xe)
+{
+	int i;
+
+	i = 0;
+	while (s[0][i])
+	{
+		if (s[0][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (s[xe.y][i])
+	{
+		if (s[xe.y][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (s[i][0])
+	{
+		if (s[i][0] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+		while (s[i][-1])
+	{
+		if (s[i][-1] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
 }
