@@ -6,7 +6,7 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:49:35 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 13:00:26 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/13 14:40:36 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	printe(t_var *he, char c)
 	}
 	if (c == 'E')
 		printimg(he, "xpm/Exit.xpm");
+	if (c == 'N')
+		printimg(he, "xpm/trap.xpm");
 }
 
 void	printmap(t_var *he, char **s)
@@ -85,7 +87,7 @@ void	printmap(t_var *he, char **s)
 	he->y = 0;
 }
 
-/*int check_map(char **s,t_res xe)
+ /*int check_map(char **s,t_res xe)
 {
 	int i;
 
