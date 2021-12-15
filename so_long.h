@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:03:09 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 12:05:51 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:00:06 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ void	ft_print_m(t_var *he);
 char	*ft_itoa(int n);
 void	printimg(t_var *he, char *s);
 void	printe(t_var *he, char c);
+int		check_map(char **s,t_res *xe);
+int checklen(char **s);
 #endif

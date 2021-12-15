@@ -6,7 +6,7 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:49:35 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 13:00:26 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:04:43 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,37 +85,4 @@ void	printmap(t_var *he, char **s)
 	he->y = 0;
 }
 
-/*int check_map(char **s,t_res xe)
-{
-	int i;
 
-	i = 0;
-	while (s[0][i])
-	{
-		if (s[0][i] != '1')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (s[xe.y][i])
-	{
-		if (s[xe.y][i] != '1')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (s[i][0])
-	{
-		if (s[i][0] != '1')
-			return (0);
-		i++;
-	}
-	i = 0;
-		while (s[i][-1])
-	{
-		if (s[i][-1] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}*/

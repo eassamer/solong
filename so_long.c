@@ -6,7 +6,7 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:37:03 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 14:37:48 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:03:47 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,24 @@ int	count_w(char **s)
 		i++;
 	return (i);
 }
+void freeblocks(t_var *he)
+{
+	int	i;
+	
+	i = 0;
+	while (he->s[i])
+	{
+			free(he->s[i]);
+		i++;
+	}
+}
 
 int redcross(int keycode, t_var *he)
 {
+	(void)keycode;
 	exit(0);
-	return (0);
+	freeblocks(he);
+	return (0); 
 }
 
 int	main(int ac, char **av)
@@ -58,6 +71,11 @@ int	main(int ac, char **av)
 	he.s = get_map(av[1]);
 	xe.x = ft_strlen(he.s[0]);
 	xe.y = count_w(he.s);
+	if (!check_map(he.s,&xe) || !checklen(he.s))
+	{
+		printf("ERROR MAP");
+		return 0;
+	}
 	he.len = -1;
 	he.h = xe.y * 40;
 	he.w = xe.x * 40;

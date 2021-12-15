@@ -3,43 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:34:56 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 11:35:35 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:14:06 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	*ft_strjoin1(char *s1, char *s2)
-{
-	char	*s3;
-	int		i;
-
-	i = 0;
-	if (!s1 || !s2)
-	{
-		return (NULL);
-	}
-	s3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!s3)
-		return (NULL);
-	while (*s1)
-	{
-		s3[i] = *s1;
-		s1++;
-		i++;
-	}
-	while (*s2)
-	{
-		s3[i] = *s2;
-		s2++;
-		i++;
-	}
-	s3[i] = '\0';
-	return (s3);
-}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -67,4 +38,60 @@ char	*ft_strjoin(char *s1, char *s2)
 		dest[i++] = s2[j++];
 	free(s1);
 	return (dest);
+}
+
+static size_t    ft_count_word(char const *s, char c)
+{
+    int    lword;
+    int    words;
+
+    lword = 0;
+    words = 0;
+    while (s[lword])
+    {
+        if (s[lword] != c && (s[lword + 1] == c || s[lword + 1] == '\0'))
+            words++;
+        lword++;
+    }
+    return (words);
+}
+
+static    char    **free_word(char **s)
+{
+    int    i;
+
+    i = 0;
+    while (s[i])
+        free(s[i++]);
+    free (s);
+    return (NULL);
+}
+
+char    **ft_split(char const *s, char c)
+{
+    char    **word;
+    int        lwrd;
+    int        j;
+
+    j = 0;
+    if (!s)
+        return (NULL);
+    word = malloc ((ft_count_word(s, c) + 1) * sizeof (char *));
+    if (!word)
+        return (NULL);
+    while (*s)
+    {
+        while (*s == c)
+            s++;
+        lwrd = 0;
+        while (s[lwrd] != c && s[lwrd])
+            lwrd++;
+        if (*s != c && *s)
+            word[j++] = ft_substr(s, 0, lwrd);
+        if ((!word[j - 1]) && *s)
+            return (free_word(word));
+        s += lwrd;
+    }
+    word[j] = NULL;
+    return (word);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:35:52 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/13 11:36:46 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:13:54 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,50 +69,31 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-static size_t	ft_count(char const *s, char c)
+char	*ft_strjoin1(char *s1, char *s2)
 {
-	size_t	count;
-
-	count = 0;
-	while (*s != '\0')
-	{
-		if (*s != c)
-		{
-			count++;
-			while (*s != '\0' && *s != c)
-				s++;
-		}
-		else
-			s++;
-	}
-	return (count);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t		len;
-	char		**split;
-	size_t		i;
-	const char	*start;
+	char	*s3;
+	int		i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	split = (char **)malloc((ft_count(s, c) + 1) * sizeof(*split));
-	if (!split)
-		return (0);
-	while (*s != '\0')
+	if (!s1 || !s2)
 	{
-		while (*s && *s == c)
-			s++;
-		start = s;
-		len = 0;
-		s--;
-		while (*(++s) && *s != c)
-			len++;
-		if (*(s - 1) != c)
-			split[i++] = ft_substr(start, 0, len);
+		return (NULL);
 	}
-	split[i] = 0;
-	return (split);
+	s3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!s3)
+		return (NULL);
+	while (*s1)
+	{
+		s3[i] = *s1;
+		s1++;
+		i++;
+	}
+	while (*s2)
+	{
+		s3[i] = *s2;
+		s2++;
+		i++;
+	}
+	s3[i] = '\0';
+	return (s3);
 }
