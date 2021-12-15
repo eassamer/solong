@@ -6,7 +6,7 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:35:52 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/15 16:13:54 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:45:00 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,24 @@ char	*ft_strjoin1(char *s1, char *s2)
 	}
 	s3[i] = '\0';
 	return (s3);
+}
+
+char	*ft_strdup(char *str)
+{
+	int		i;
+	char	*ptr;
+
+	ptr = (char *)malloc(ft_strlen(str) * sizeof(char) + 1);
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i])
+	{
+		ptr[i] = str[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

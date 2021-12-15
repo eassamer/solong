@@ -6,7 +6,7 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:49:35 by eassamer          #+#    #+#             */
-/*   Updated: 2021/12/15 15:04:43 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:42:00 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@ char	**get_map(char *s)
 	i = 0;
 	fd = open(s, O_RDONLY);
 	line = "";
-	lines = "";
+	lines = ft_strdup("");
 	while (line)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		lines = ft_strjoin1(lines, line);
+		lines = ft_strjoin(lines, line);
+		free(line);
 	}
+	free(line);
 	close(fd);
 	return (ft_split(lines, '\n'));
 }
@@ -84,5 +86,3 @@ void	printmap(t_var *he, char **s)
 	he->x = 0;
 	he->y = 0;
 }
-
-

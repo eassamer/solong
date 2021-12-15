@@ -26,4 +26,4 @@ clean :
 	$(RM) $(NAME)
 
 
-re : fclean all
+re : clean all
